@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Session: {{ session.session_id }}</h1>
+<p>Agent: {{ session.agent_name }} | Chain Valid: {{ chain_valid }} | Created: {{ session.created_at }}</p>
+<div class="entries">
+{% for entry in entries %}
+<div class="entry">
+  <h3>Step {{ entry.step_index }}: {{ entry.entry_type }}</h3>
+  {% if entry.summary %}<p class="summary">{{ entry.summary }}</p>{% endif %}
+  <pre>{{ entry.payload | tojson(indent=2) }}</pre>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

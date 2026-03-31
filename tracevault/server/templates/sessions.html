@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Sessions</h1>
+<table>
+  <thead><tr><th>Session ID</th><th>Agent</th><th>Created</th><th>Steps</th></tr></thead>
+  <tbody>
+  {% for s in sessions %}
+  <tr><td><a href="/ui/{{ s.session_id }}">{{ s.session_id }}</a></td><td>{{ s.agent_name }}</td><td>{{ s.created_at }}</td><td>{{ s.step_count }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
